@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    background-color: #f0f0f0;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.125);
+    padding: 20px;
+}
+
+.logo {
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.searchbar {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    width: 25%;
+    margin-left: 25%;
+}
+
+.searchbar:hover {
+    border: 1px solid #999; 
+}
+  
+.searchbar:focus {
+    outline: none;
+    border: 1px solid #007bff; 
+}
+  
