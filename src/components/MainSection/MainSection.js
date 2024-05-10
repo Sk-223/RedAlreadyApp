@@ -1,23 +1,27 @@
-import React from 'react';
+// MainSection.js
+import React, { useEffect } from 'react'; // Import useEffect
+import { useSelector, useDispatch } from 'react-redux';
 import PostCard from '../PostCard/PostCard';
+import styles from './MainSection.module.css';
+import { setPosts } from '../../slices/postsSlice';
+import { postsSlice } from '../../slices/postsSlice';
 
-function MainSection() {  
-    const mockPosts = [
-        { title: 'Example Post 1', content: 'Some text content', subreddit: 'r/example', username: 'user123', type: 'text'},
-    
-        { title: 'Image Post', content: 'Check out this image', subreddit: 'r/pics', username: 'imageLover', type: 'image', imageUrl: 'https://i.imgur.com/abcd123.jpg' }, 
-    
-        { title: 'Funny Cat Video', content: 'Hilarious!', subreddit: 'r/funny', username: 'catEnthusiast', type: 'video', videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'},
-    ]; 
-    
+function MainSection() {
+  const posts = useSelector((state) => state.posts.posts);
+  const dispatch = useDispatch();
 
-    return (
-        <div className="main-section">
-            {mockPosts.map((post) => (
-                <PostCard key={post.title} post={post} />
-            ))}
-        </div>
-    );
+  useEffect(() => {
+    // Load initial posts from postsSlice
+    dispatch(setPosts(postsSlice.getInitialState().posts)); 
+  }, [dispatch]);
+
+  return (
+    <main className={styles.mainSection}>
+      {posts.map((post) => (
+        <PostCard key={post.id} postId={post.id} />
+      ))}
+    </main>
+  );
 }
 
-export default MainSection; 
+export default MainSection;
