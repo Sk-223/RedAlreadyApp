@@ -1,0 +1,35 @@
+.sidebar {
+    width: 200px;
+    background-color: #f6f6f6;
+    padding: 20px;
+    text-align: center;
+}
+  
+  .sidebar h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin-bottom: 5px;
+  }
+  
+  .categoryButton {
+    background-color: transparent;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .categoryButton:hover {
+    background-color: #ddd;
+    width: 100%;
+  }
+  
