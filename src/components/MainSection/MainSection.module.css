@@ -1,7 +1,5 @@
 .mainSection {
     padding: 20px; 
     display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr)); /* Change 300px to adjust minimum card width */
-    gap: 20px; 
   }
   

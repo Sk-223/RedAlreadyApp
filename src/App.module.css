@@ -1,11 +1,13 @@
 .appContainer {
     display: grid;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 1fr;
   }
   
-  .contentContainer {
+.contentContainer {
     display: flex;
     justify-content: space-between;
 }
 
-  
+.mainContent {
+    max-width: 50%;
+}

@@ -4,6 +4,8 @@
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.125);
     padding: 20px;
+    max-height: 80px; /* Adjust the value as needed */
+    overflow: hidden;
 }
 
 .logo {

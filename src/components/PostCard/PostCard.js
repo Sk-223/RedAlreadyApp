@@ -7,18 +7,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { upvotePost, downvotePost } from '../../slices/postsSlice';
 import CommentSection from '../CommentSection/CommentSection';
 
-function PostCard({ postId }) {
-  const post = useSelector((state) => state.posts.posts.find(p => p.id === postId));
+function PostCard({ postId, subreddit }) {
+  const post = useSelector((state) => state.posts.postsBySubreddit[subreddit]?.find(p => p.id === postId));
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
 
 
   const handleUpvote = () => {
-    dispatch(upvotePost(postId));
+    dispatch(upvotePost({ postId, subreddit }));
   };
 
   const handleDownvote = () => {
-    dispatch(downvotePost(postId));
+    dispatch(downvotePost({ postId, subreddit }));
   };
   
     if (!post) {
