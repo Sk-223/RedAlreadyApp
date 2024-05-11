@@ -13,6 +13,10 @@ const initialState = {
         comments: [ // Added comments for this post
           { id: 101, author: 'commenter1', body: 'This is a great post!' },
           { id: 102, author: 'commenter2', body: 'Interesting thoughts.' },
+          { id: 103, author: 'commenter3', body: 'Interesting..' },
+          { id: 104, author: 'commenter4', body: '..thoughts.' },
+          { id: 105, author: 'commenter5', body: 'InterestingThoughts.' },
+          { id: 106, author: 'commenter6', body: 'Interesting THoughts.' },
         ],
       },
       {
