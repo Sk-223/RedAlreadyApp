@@ -1,38 +1,46 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  posts: [
-    { 
-      id: 1, 
-      title: 'Example Post 1', 
-      content: 'Some text content', 
-      subreddit: 'r/example', 
-      username: 'user123', 
-      type: 'text',
-      votes: 0 
-    },
-    {
-      id: 2,
-      title: 'Image Post', 
-      content: 'Check out this image', 
-      subreddit: 'r/pics', 
-      username: 'imageLover', 
-      type: 'image', 
-      imageUrl: 'https://i.imgur.com/abcd123.jpg',
-      votes: 0
-    },
-    {
-      id: 3,
-      title: 'Funny Cat Video', 
-      content: 'Hilarious!', 
-      subreddit: 'r/funny', 
-      username: 'catEnthusiast', 
-      type: 'video', 
-      videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', // Add a placeholder video URL
-      votes: 0
-    },
-  ],
-};
+    posts: [
+      {
+        id: 1,
+        title: 'Example Post 1',
+        content: 'Some text content',
+        subreddit: 'r/example',
+        username: 'user123',
+        type: 'text',
+        votes: 0,
+        comments: [ // Added comments for this post
+          { id: 101, author: 'commenter1', body: 'This is a great post!' },
+          { id: 102, author: 'commenter2', body: 'Interesting thoughts.' },
+        ],
+      },
+      {
+        id: 2,
+        title: 'Image Post',
+        content: 'Check out this image',
+        subreddit: 'r/pics',
+        username: 'imageLover',
+        type: 'image',
+        imageUrl: 'https://i.imgur.com/abcd123.jpg',
+        votes: 0,
+        comments: [ // Added comments for this post
+          { id: 201, author: 'anotherUser', body: 'Nice photo!' },
+        ],
+      },
+      {
+        id: 3,
+        title: 'Funny Cat Video',
+        content: 'Hilarious!',
+        subreddit: 'r/funny',
+        username: 'catEnthusiast',
+        type: 'video',
+        videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+        votes: 0,
+        comments: [] // Empty comments array for this post
+      },
+    ],
+  };
 
 export const postsSlice = createSlice({
   name: 'posts',
