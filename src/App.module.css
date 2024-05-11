@@ -1,0 +1,11 @@
+.appContainer {
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  
+  .contentContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+  
