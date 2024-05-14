@@ -11,14 +11,11 @@ function SubredditContent() {
   const dispatch = useDispatch();
 
   const { postsBySubreddit, isLoading, error } = useSelector((state) => state.posts);
-  console.log('postsBySubreddit in SubredditContent:', postsBySubreddit);
   const posts = postsBySubreddit[subreddit] || [];
 
   useEffect(() => {
-    if(subreddit && !postsBySubreddit[subreddit]) {
       dispatch(fetchSubredditPosts(subreddit));
-    }
-  }, [subreddit, dispatch, postsBySubreddit]); // Add dispatch to dependency array
+  }, [subreddit, dispatch]);
 
   if (isLoading) {
     return <p>Loading posts...</p>;
@@ -32,7 +29,7 @@ function SubredditContent() {
   if (posts.length === 0) {
     return (
       <div>
-        {subreddit === 'r/popular' || subreddit === undefined ? ( // Check for undefined subreddit (initial load)
+        {subreddit === undefined ? ( // Check for undefined subreddit (initial load)
           <p>No posts to display here.</p> 
         ) : (
           <>
