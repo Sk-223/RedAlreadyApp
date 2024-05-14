@@ -11,9 +11,9 @@ function Sidebar() {
         <ul>
             {categories.map((category) => (
             <li key={category}>
-                <Link to={`/${category.substring(2)}`} className={styles.categoryButton}>
+              <Link to={`/r/${category.substring(2)}`} className={styles.categoryButton}>
                 {category}
-                </Link>
+              </Link>
             </li>
             ))}
         </ul>

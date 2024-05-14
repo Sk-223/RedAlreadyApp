@@ -8,11 +8,11 @@ import { fetchSubredditPosts } from '../../slices/postsSlice'; // Import fetchSu
 function MainSection() {
   const dispatch = useDispatch();
   const { postsBySubreddit, isLoading, error } = useSelector((state) => state.posts);
-  const posts = postsBySubreddit['Front Page'] || []; // Fetch posts for the front page
+  const posts = postsBySubreddit['r/popular'] || []; // Fetch posts for the front page
 
   useEffect(() => {
-    dispatch(fetchSubredditPosts('/popular'));
-    }, [dispatch]);
+      dispatch(fetchSubredditPosts('r/popular'));
+  }, [dispatch]);
 
   if (isLoading) {
     return <p>Loading posts...</p>;
@@ -25,7 +25,7 @@ function MainSection() {
   return (
     <main className={styles.mainSection}>
       {posts.map((post) => (
-        <PostCard key={post.id} postId={post.id} subreddit={post.subreddit} />
+        <PostCard key={post.id} post={post} />
       ))}
     </main>
   );

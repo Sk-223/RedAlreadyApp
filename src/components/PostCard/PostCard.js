@@ -7,23 +7,34 @@ import { useSelector, useDispatch } from 'react-redux';
 import { upvotePost, downvotePost } from '../../slices/postsSlice';
 import CommentSection from '../CommentSection/CommentSection';
 
-function PostCard({ postId, subreddit }) {
-  const post = useSelector((state) => state.posts.postsBySubreddit[subreddit]?.find(p => p.id === postId));
+function PostCard({ post }) {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
 
+  // const { isLoading, postsBySubreddit } = useSelector(state => state.posts);
+  // const post = postsBySubreddit[subreddit]?.find(p => p.id === postId);
+  // console.log("Post data in PostCard:", post); 
+  // console.log("subreddit: ", subreddit)
+
 
   const handleUpvote = () => {
-    dispatch(upvotePost({ postId, subreddit }));
+    dispatch(upvotePost({ postId: post.id, subreddit: post.subreddit }));
   };
 
   const handleDownvote = () => {
-    dispatch(downvotePost({ postId, subreddit }));
+    dispatch(downvotePost({ postId: post.id, subreddit: post.subreddit }));
   };
   
-    if (!post) {
-        return <div>Loading...</div>; 
-    }
+  if(!post) {
+    return <div>Loading...</div>
+  }
+  // if (isLoading) { 
+  //   return <div>Loading...</div>;
+  // }
+
+  // if(!post) {
+  //   return <div>Post not found.</div>
+  // }
 
   return (
     <article className={styles.postCard}>
@@ -59,7 +70,7 @@ function PostCard({ postId, subreddit }) {
         {showComments ? "Hide Comments" : `View Comments ${post.comments.length}`}
         </button>
         {/* Conditionally render CommentSection */}
-        {showComments && <CommentSection postId={postId} />}
+        {showComments && <CommentSection postId={post.id} />}
       </div>
     </article>
   );

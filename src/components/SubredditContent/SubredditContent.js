@@ -11,13 +11,14 @@ function SubredditContent() {
   const dispatch = useDispatch();
 
   const { postsBySubreddit, isLoading, error } = useSelector((state) => state.posts);
+  console.log('postsBySubreddit in SubredditContent:', postsBySubreddit);
   const posts = postsBySubreddit[subreddit] || [];
 
   useEffect(() => {
-    if (subreddit) { // Only fetch if subreddit is available
+    if(subreddit && !postsBySubreddit[subreddit]) {
       dispatch(fetchSubredditPosts(subreddit));
     }
-  }, [subreddit, dispatch]); // Add dispatch to dependency array
+  }, [subreddit, dispatch, postsBySubreddit]); // Add dispatch to dependency array
 
   if (isLoading) {
     return <p>Loading posts...</p>;
@@ -31,8 +32,8 @@ function SubredditContent() {
   if (posts.length === 0) {
     return (
       <div>
-        {subreddit === 'Popular' || subreddit === undefined ? ( // Check for undefined subreddit (initial load)
-          <p>No posts to display on the front page.</p> 
+        {subreddit === 'r/popular' || subreddit === undefined ? ( // Check for undefined subreddit (initial load)
+          <p>No posts to display here.</p> 
         ) : (
           <>
             <p>No posts found for r/{subreddit}.</p>
@@ -46,9 +47,9 @@ function SubredditContent() {
   // Render posts if available
   return (
     <div className={styles.subredditContent}>
-      <h2>{subreddit === 'Front Page' ? 'Home' : subreddit}</h2>
+      <h2>{subreddit}</h2>
       {posts.map((post) => (
-        <PostCard key={post.id} postId={post.id} subreddit={subreddit} />
+        <PostCard key={post.id} post={post} />
       ))}
     </div>
   );
