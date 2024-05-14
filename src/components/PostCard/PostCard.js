@@ -3,19 +3,13 @@ import styles from './PostCard.module.css';
 import createEmbedURL from '../../utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { upvotePost, downvotePost } from '../../slices/postsSlice';
 import CommentSection from '../CommentSection/CommentSection';
 
 function PostCard({ post }) {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
-
-  // const { isLoading, postsBySubreddit } = useSelector(state => state.posts);
-  // const post = postsBySubreddit[subreddit]?.find(p => p.id === postId);
-  // console.log("Post data in PostCard:", post); 
-  // console.log("subreddit: ", subreddit)
-
 
   const handleUpvote = () => {
     dispatch(upvotePost({ postId: post.id, subreddit: post.subreddit }));
@@ -28,13 +22,6 @@ function PostCard({ post }) {
   if(!post) {
     return <div>Loading...</div>
   }
-  // if (isLoading) { 
-  //   return <div>Loading...</div>;
-  // }
-
-  // if(!post) {
-  //   return <div>Post not found.</div>
-  // }
 
   return (
     <article className={styles.postCard}>
