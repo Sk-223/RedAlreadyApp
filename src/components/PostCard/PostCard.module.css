@@ -53,3 +53,8 @@
 .commentButton {
   margin-left: auto;
 }
+
+.postCardLink {
+  text-decoration: none;
+  color: inherit; 
+}
