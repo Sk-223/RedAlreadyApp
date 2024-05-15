@@ -44,7 +44,7 @@ function SubredditContent() {
   // Render posts if available
   return (
     <div className={styles.subredditContent}>
-      <h2>{subreddit}</h2>
+      <h2>r/{subreddit}</h2>
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}

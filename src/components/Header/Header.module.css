@@ -1,4 +1,9 @@
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     display: flex;
     background-color: #f0f0f0;
     align-items: center;
@@ -8,13 +13,21 @@
     overflow: hidden;
 }
 
+h1 {
+    color: black;
+}
+
 .logo {
+    color: #FF6E05;
     height: 30px;
     display: flex;
     align-items: center;
+    width: 25%;
 }
 
 .searchbar {
+    flex-grow: 1;
+    flex-basis: 250px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 30px;
@@ -31,3 +44,13 @@
     border: 1px solid #007bff; 
 }
   
+.searchBarContainer {
+    width:100%;
+}
+
+.searchIcon {
+    margin-left: 10px;
+    background-color: transparent;
+    ;border: none;
+    cursor: pointer;
+}

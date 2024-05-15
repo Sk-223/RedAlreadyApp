@@ -16,7 +16,7 @@ function App() {
         <div className={styles.contentContainer}>
           <Routes>
             {/* A Route for each subreddit and a default route */}
-            <Route path="/" element={<MainSection className={styles.mainSection} />} />
+            <Route index element={<MainSection />} />    
             <Route path="/r/:subreddit" element={<SubredditContent />} />
           </Routes>
           <Sidebar className={styles.sidebar}/>

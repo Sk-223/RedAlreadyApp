@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PostCard from '../PostCard/PostCard';
-import styles from './MainSection.module.css';
 import { fetchSubredditPosts } from '../../slices/postsSlice';
 
 function MainSection() {
@@ -38,9 +37,9 @@ function MainSection() {
   : posts;
 
   return (
-    <main className={styles.mainSection}>
+    <main>
       {filteredPosts.map((post) => (
-        <PostCard key={post.id} post={post} /> // Pass entire post object
+        <PostCard key={post.id} post={post} /> 
       ))}
     </main>
   );

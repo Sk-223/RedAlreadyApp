@@ -1,8 +1,10 @@
 .sidebar {
+    margin-top: 30px;
     width: 200px;
     background-color: #f6f6f6;
     padding: 20px;
     text-align: center;
+    border-radius: 10px;
 }
   
   .sidebar h2 {

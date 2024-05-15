@@ -1,6 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerm } from "../../slices/searchbarSlice";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faReddit } from '@fortawesome/free-brands-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.css';
 
 function Header() {
@@ -15,16 +18,21 @@ function Header() {
   return (
     <div className={styles.header}>
         <div className={styles.logo}>
-          <img src="logo.svg" alt="Logo" className={styles.logo} />
-          <h1>Reddit Clone</h1>
+        <FontAwesomeIcon icon={faReddit} size="2x" className={styles.logo} />
+          <h1>Red-Already</h1>
         </div>
-      <input 
-        type="text" 
-        placeholder="Search..." 
-        className={styles.searchbar}
-        value={searchTerm}
-        onChange={handleSearchChange}
-      /> 
+        <div className={styles.searchBarContainer}>
+            <input 
+            type="text" 
+            placeholder="Search..." 
+            className={styles.searchbar}
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <button type="button" onClick={handleSearchChange} className={styles.searchIcon}>
+            <FontAwesomeIcon icon={faSearch} aria-label="Search" />
+          </button>
+        </div>
     </div>
   );
 }

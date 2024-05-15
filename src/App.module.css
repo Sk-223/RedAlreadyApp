@@ -1,11 +1,14 @@
 .appContainer {
     display: grid;
     grid-template-rows: 1fr;
-  }
+    position: relative;
+    width: 100%;
+}
   
 .contentContainer {
     display: flex;
     justify-content: space-between;
+    padding-top: 80px;
 }
 
 .mainContent {
