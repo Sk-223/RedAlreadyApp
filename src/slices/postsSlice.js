@@ -5,7 +5,9 @@ const initialState = {
   postsBySubreddit: {}, // Object to store posts by subreddit
   isLoading: false,
   error: null,
-  searchInput: [],
+  commentsByPostId: {},
+  commentsLoading: false,
+  commentsError: null,
 };
 
 export const fetchSubredditPosts = createAsyncThunk(
@@ -47,6 +49,23 @@ export const fetchSearchResults = createAsyncThunk(
         content: child.data.selftext,
         subreddit: child.data.subreddit,
         // ... add other relevant properties
+      }));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchComments = createAsyncThunk(
+  "posts/fetchComments",
+  async (postId, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`https://www.reddit.com/comments/${postId}.json`);
+      const json = await response.json();
+      return json[1].data.children.map(child => ({
+        id: child.data.id,
+        author: child.data.author,
+        body: child.data.body,
       }));
     } catch (error) {
       return rejectWithValue(error.message);
@@ -98,6 +117,18 @@ const postsSlice = createSlice({
       .addCase(fetchSearchResults.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      .addCase(fetchComments.pending, (state, action) => {
+        state.commentsLoading = true;
+        state.commentsError = null;
+      })
+      .addCase(fetchComments.fulfilled, (state, action) => {
+        state.commentsLoading = false;
+        state.commentsByPostId[action.meta.arg] = action.payload;
+      })
+      .addCase(fetchComments.rejected, (state, action) => {
+        state.commentsLoading = false;
+        state.commentsError = action.payload;
       });
   },
 });

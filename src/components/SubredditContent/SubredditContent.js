@@ -25,21 +25,15 @@ function SubredditContent() {
     return <p>Error: {error}</p>;
   }
 
-  // If no posts, display message or navigate
-  if (posts.length === 0) {
-    return (
-      <div>
-        {subreddit === undefined ? ( // Check for undefined subreddit (initial load)
-          <p>No posts to display here.</p> 
-        ) : (
-          <>
-            <p>No posts found for r/{subreddit}.</p>
-            <button onClick={() => navigate(-1)}>Go Back</button> 
-          </>
-        )}
-      </div>
-    );
-  }
+// If no posts, display message or navigate
+if (!isLoading && !error && posts.length === 0) { // <-- Check for isLoading and error here
+  return (
+    <div>
+        <p>No posts found for r/{subreddit}.</p>
+        <button onClick={() => navigate(-1)}>Go Back</button> 
+    </div>
+  );
+}
 
   // Render posts if available
   return (

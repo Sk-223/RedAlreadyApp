@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import Comment from '../Comment/Comment';
-import styles from './CommentSection.module.css';
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import Comment from "../Comment/Comment";
+import styles from "./CommentSection.module.css";
+import { fetchComments } from "../../slices/postsSlice";
 
-function CommentSection({ postId }) {
-  const post = useSelector((state) =>
-    state.posts.posts.find((p) => p.id === postId)
+function CommentSection({ postId, subreddit }) {
+  const dispatch = useDispatch();
+  const { commentsByPostId, commentsLoading, commentsError } = useSelector(
+    (state) => state.posts
   );
+  const comments = commentsByPostId[postId] || []; // Access comments from the store
 
-  const [displayedComments, setDisplayedComments] = useState(post?.comments.slice(0, 5) || []); // Show the first 5 comments
-  const [showAllComments, setShowAllComments] = useState(false);
+  useEffect(() => {
+    if (postId) {
+      dispatch(fetchComments(postId));
+    }
+  }, [postId, dispatch]); // dispatch is added as a dependency
 
-  const handleLoadMore = () => {
-    setDisplayedComments(post.comments);
-    setShowAllComments(true);
-  };
+  if (commentsLoading) {
+    return <p>Loading comments...</p>;
+  }
+
+  if (commentsError) {
+    return <p>Error: {commentsError}</p>;
+  }
+
+  if (comments.length === 0) {
+    return <p>No comments yet.</p>;
+  }
 
   return (
     <div className={styles.commentSection}>
-      <h3>Comments</h3>
-      {displayedComments.map((comment, index) => (
-        <Comment key={index} comment={comment} />
+      <h3>Comments ({comments.length})</h3>
+      {comments.map((comment) => (
+        <Comment key={comment.id} comment={comment} />
       ))}
-
-      {!showAllComments && post?.comments.length > 5 && (
-        <button onClick={handleLoadMore}>Load More Comments</button>
-      )}
     </div>
   );
 }
