@@ -1,3 +1,4 @@
+// PostCard.js
 import React, { useState } from 'react';
 import styles from './PostCard.module.css';
 import createEmbedURL from '../../utils';
@@ -6,10 +7,12 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { upvotePost, downvotePost } from '../../slices/postsSlice';
 import CommentSection from '../CommentSection/CommentSection';
+import { formatDistanceToNow } from 'date-fns';
 
 function PostCard({ post }) {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
+  const timeAgo = formatDistanceToNow(new Date(post.createdAt * 1000), { addSuffix: true });
 
   const handleUpvote = () => {
     dispatch(upvotePost({ postId: post.id, subreddit: post.subreddit }));
@@ -18,15 +21,16 @@ function PostCard({ post }) {
   const handleDownvote = () => {
     dispatch(downvotePost({ postId: post.id, subreddit: post.subreddit }));
   };
-  
-  if(!post) {
-    return <div>Loading...</div>
+
+  if (!post) {
+    return <div>Loading...</div>;
   }
 
   return (
     <article className={styles.postCard}>
-      <h3>{post.title}</h3> 
-      <div className={styles.postContent}> 
+      <h2>r/{post.subreddit}</h2>
+      <h3>{post.title}</h3>
+      <div className={styles.postContent}>
         {(post.type === 'text') ? <p>{post.content}</p> : null}
         {(post.type === 'image') ? <img src={post.imageUrl} alt={post.title} /> : null}
         {(post.type === 'video' && post.videoUrl) && ( 
@@ -41,23 +45,28 @@ function PostCard({ post }) {
           </div>
         )}
       </div>
-      <div className={styles.postMeta}> 
-        <p>Posted in: r/{post.subreddit}</p> 
-        <p>By: u/{post.username}</p> 
-      </div>
-      <div className={styles.postInteractions}>  
-        <button className={styles.upvote} onClick={handleUpvote}>
-          <FontAwesomeIcon icon={faAngleUp} />
-        </button>
-        <div className={styles.voteCount}>{post.votes}</div>
-        <button className={styles.downvote} onClick={handleDownvote}>
-          <FontAwesomeIcon icon={faAngleDown} />
-        </button>
-        <button onClick={() => setShowComments(!showComments)}>
-        {showComments ? "Hide Comments" : `View Comments ${post.numComments}`}
-        </button>
-        {/* Conditionally render CommentSection */}
-        {showComments && <CommentSection postId={post.id} subreddit={post.subreddit} />}
+
+      <hr className={styles.divider}/> {/* Add a divider */}
+
+      <div className={styles.postFooter}>
+        <div className={styles.postMeta}> 
+            <p>By: u/{post.username} • {timeAgo}</p> 
+        </div>
+        <div className={styles.postInteractions}>
+          <button className={styles.upvote} onClick={handleUpvote}>
+            <FontAwesomeIcon icon={faAngleUp} />
+          </button>
+          <div className={styles.voteCount}>{post.votes}</div>
+          <button className={styles.downvote} onClick={handleDownvote}>
+            <FontAwesomeIcon icon={faAngleDown} />
+          </button>
+      
+          <button className={styles.commentButton} onClick={() => setShowComments(!showComments)}>
+            {showComments ? "Hide Comments" : `View Comments ${post.numComments}`}
+          </button>
+          {/* Conditionally render CommentSection */}
+          {showComments && <CommentSection postId={post.id} subreddit={post.subreddit} />}
+        </div>
       </div>
     </article>
   );
