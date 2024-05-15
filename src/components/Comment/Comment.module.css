@@ -1,0 +1,14 @@
+.comment {
+    background-color: #f6f6f6;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+  
+.comment p {
+  margin: 0;
+}
+  
+.comment strong {
+  font-weight: 500;
+}

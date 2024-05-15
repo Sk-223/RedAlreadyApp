@@ -19,7 +19,7 @@ function Header() {
     <div className={styles.header}>
         <div className={styles.logo}>
         <FontAwesomeIcon icon={faReddit} size="2x" className={styles.logo} />
-          <h1>Red-Already</h1>
+          <h2>Red-Already</h2>
         </div>
         <div className={styles.searchBarContainer}>
             <input 

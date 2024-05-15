@@ -54,10 +54,10 @@ function PostCard({ post }) {
           <FontAwesomeIcon icon={faAngleDown} />
         </button>
         <button onClick={() => setShowComments(!showComments)}>
-        {showComments ? "Hide Comments" : `View Comments ${post.comments.length}`}
+        {showComments ? "Hide Comments" : `View Comments ${post.numComments}`}
         </button>
         {/* Conditionally render CommentSection */}
-        {showComments && <CommentSection postId={post.id} />}
+        {showComments && <CommentSection postId={post.id} subreddit={post.subreddit} />}
       </div>
     </article>
   );
