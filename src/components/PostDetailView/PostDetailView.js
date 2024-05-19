@@ -23,7 +23,7 @@ function PostDetailView() {
     } else {
       dispatch(fetchComments(postId));
     }
-  }, [subreddit, post, navigate, dispatch]);
+  }, [subreddit, post, navigate, dispatch, postId]);
 
   if (isLoading) {
     return <p>Loading posts...</p>;

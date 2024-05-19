@@ -21,8 +21,8 @@ function MainSection() {
     return <p>Error: {error}</p>;
   }
 
-  const posts = postsBySubreddit['popular'] || [];
-
+  const posts = postsBySubreddit && postsBySubreddit['popular'] ? postsBySubreddit['popular'] : [];
+  
   // Filter posts based on search term (case-insensitive)
   const filteredPosts = searchTerm
   ? posts.filter(post => {
@@ -37,7 +37,7 @@ function MainSection() {
   : posts;
 
   return (
-    <main>
+    <main data-testid="main-section">
       {filteredPosts.map((post) => (
         <PostCard key={post.id} post={post} /> 
       ))}
