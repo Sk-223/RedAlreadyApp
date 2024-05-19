@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 function PostCard({ post }) {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
-  const timeAgo = formatDistanceToNow(new Date(post.createdAt * 1000), { addSuffix: true });
+  const timeAgo = post ? formatDistanceToNow(new Date(post.createdAt * 1000), { addSuffix: true }) : '';
 
   const handleUpvote = () => {
     dispatch(upvotePost({ postId: post.id, subreddit: post.subreddit }));
@@ -29,15 +29,15 @@ function PostCard({ post }) {
   }
 
   return (
-    <article className={styles.postCard}>
+    <article className={styles.postCard} data-testid="post-card">
       <Link to={`/r/${post.subreddit}/${post.id}`} className={styles.postCardLink}>
-        <h2>r/{post.subreddit}</h2>
-        <h3>{post.title}</h3>
+        <h2 data-testid="subreddit">r/{post.subreddit}</h2>
+        <h3 data-testid="post-title">{post.title}</h3>
         <div className={styles.postContent}>
-          {(post.type === 'text') ? <p>{post.content}</p> : null}
-          {(post.type === 'image') ? <img src={post.imageUrl} alt={post.title} /> : null}
+          {(post.type === 'text') ? <p data-testid="post-content">{post.content}</p> : null}
+          {(post.type === 'image') ? <img src={post.imageUrl} alt={post.title} data-testid="post-image" /> : null}
           {(post.type === 'video' && post.videoUrl) && ( 
-            <div className={styles.videoContainer}>
+            <div className={styles.videoContainer} data-testid="post-video">
               <iframe 
                 width="420" 
                 height="315"
@@ -48,33 +48,27 @@ function PostCard({ post }) {
             </div>
           )}
         </div>
-{/* 
-        <h3>
-          <Link to={`/r/${post.subreddit}/${post.id}`}>
-            {post.title}
-          </Link>
-        </h3> */}
 
-        <hr className={styles.divider}/> {/* Add a divider */}
+        <hr className={styles.divider} data-testid="divider"/> {/* Add a divider */}
 
         <div className={styles.postFooter}>
           <div className={styles.postMeta}> 
-              <p>By: u/{post.username} • {timeAgo}</p> 
+              <p data-testid="post-username">By: u/{post.username} • {timeAgo}</p> 
           </div>
           <div className={styles.postInteractions}>
-            <button className={styles.upvote} onClick={handleUpvote}>
+            <button className={styles.upvote} onClick={handleUpvote} data-testid="upvote-button">
               <FontAwesomeIcon icon={faAngleUp} />
             </button>
             <div className={styles.voteCount}>{post.votes}</div>
-            <button className={styles.downvote} onClick={handleDownvote}>
+            <button className={styles.downvote} onClick={handleDownvote} data-testid="downvote-button">
               <FontAwesomeIcon icon={faAngleDown} />
             </button>
         
-            <button className={styles.commentButton} onClick={() => setShowComments(!showComments)}>
+            <button className={styles.commentButton} onClick={() => setShowComments(!showComments)} data-testid="comment-button">
               {showComments ? "Hide Comments" : `View Comments ${post.numComments}`}
             </button>
             {/* Conditionally render CommentSection */}
-            {showComments && <CommentSection postId={post.id} subreddit={post.subreddit} />}
+            {showComments && <CommentSection postId={post.id} subreddit={post.subreddit} data-testid="comment-section" />}
           </div>
         </div>
       </Link>

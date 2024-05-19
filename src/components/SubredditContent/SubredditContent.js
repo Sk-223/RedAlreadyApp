@@ -37,7 +37,7 @@ if (!isLoading && !error && posts.length === 0) { // <-- Check for isLoading and
 
   // Render posts if available
   return (
-    <div className={styles.subredditContent}>
+    <div className={styles.subredditContent} data-testid="subreddit-content">
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}
