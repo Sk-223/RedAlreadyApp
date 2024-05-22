@@ -39,7 +39,7 @@ function PostDetailView() {
 
   return (
     <div className={styles.postDetailView}>
-      <PostCard post={post} />
+      <PostCard post={post} hideCommentsButton={true} />
       <CommentSection postId={postId} subreddit={subreddit} />
     </div>
   );
