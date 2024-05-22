@@ -11,7 +11,7 @@ import CommentSection from '../CommentSection/CommentSection';
 import { formatDistanceToNow } from 'date-fns';
 import { Link } from 'react-router-dom';
 
-function PostCard({ post }) {
+function PostCard({ post, hideCommentsButton }) {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
   const timeAgo = post ? formatDistanceToNow(new Date(post.createdAt * 1000), { addSuffix: true }) : '';
@@ -64,9 +64,11 @@ function PostCard({ post }) {
               <FontAwesomeIcon icon={faAngleDown} />
             </button>
         
-            <button className={styles.commentButton} onClick={() => setShowComments(!showComments)} data-testid="comment-button">
-              {showComments ? "Hide Comments" : `View Comments ${post.numComments}`}
-            </button>
+            {!hideCommentsButton && (
+              <button className={styles.commentButton} onClick={() => setShowComments(!showComments)} data-testid="comment-button">
+                {showComments ? "Hide Comments" : `View Comments ${post.numComments}`}
+              </button>
+            )}
             {/* Conditionally render CommentSection */}
             {showComments && <CommentSection postId={post.id} subreddit={post.subreddit} data-testid="comment-section" />}
           </div>

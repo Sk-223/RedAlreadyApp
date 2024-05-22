@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReddit } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import styles from './Header.module.css';
+import { fetchSearchResults } from '../../slices/searchbarSlice';
 
 function Header() {
   const dispatch = useDispatch();
@@ -15,6 +16,10 @@ function Header() {
     dispatch(setSearchTerm(newSearchTerm)); 
   };
   
+  const handleSearchSubmit = () => {
+    dispatch(fetchSearchResults({ searchTerm }));
+  };
+
   return (
     <div className={styles.header}>
         <div className={styles.logo}>
@@ -29,7 +34,7 @@ function Header() {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <button type="button" onClick={handleSearchChange} className={styles.searchIcon}>
+          <button type="button" onClick={handleSearchSubmit} className={styles.searchIcon}>
             <FontAwesomeIcon icon={faSearch} aria-label="Search" />
           </button>
         </div>
