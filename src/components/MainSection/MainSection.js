@@ -38,9 +38,13 @@ function MainSection() {
 
   return (
     <main data-testid="main-section">
-      {filteredPosts.map((post) => (
-        <PostCard key={post.id} post={post} /> 
-      ))}
+      {filteredPosts.length > 0 ? (
+        filteredPosts.map((post) => (
+          <PostCard key={post.id} post={post} /> 
+      ))
+      ) : (
+        <p>No posts found.</p>
+      )}
     </main>
   );
 }

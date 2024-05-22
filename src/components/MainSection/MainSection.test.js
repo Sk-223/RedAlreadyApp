@@ -1,15 +1,16 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
-import userEvent from '@testing-library/user-event';
 import MainSection from './MainSection';
 import postsReducer from '../../slices/postsSlice';
 import searchReducer from '../../slices/searchbarSlice';
 
-// // Mock the PostCard component
-// jest.mock('../PostCard/PostCard', () => () => <div>Mocked PostCard</div>);
+// Mock the PostCard component
+jest.mock('../PostCard/PostCard', () => {
+  return ({ post }) => <div>{post.title}</div>;
+});
 
 // Test Cases:
 
@@ -89,5 +90,31 @@ describe('MainSection', () => {
       expect(screen.getByTestId('main-section')).toBeInTheDocument();
       expect(screen.getByText('Post 1')).toBeInTheDocument();
       expect(screen.getByText('Post 2')).toBeInTheDocument();
+  });
+
+  it('should update when posts state changes', () => {
+    const mockState = {
+      posts: {
+        isLoading: false,
+        error: null,
+        posts: [{ id: 1, title: 'Test Post', body: 'Test Body' }],
+      },
+    };
+    store = configureStore({
+      reducer: {
+        posts: () => mockState.posts,
+        search: searchReducer,
+      },
     });
+    render(
+      <Provider store={store}>
+        <MainSection />
+      </Provider>
+    );
+    // Use waitFor to wait for the 'Test Post' text to appear
+    waitFor(async () => {
+      const postElement = await screen.findByText('Test Post');
+      expect(postElement).toBeInTheDocument();
+    }, { timeout: 3000 });
+  });
 });
