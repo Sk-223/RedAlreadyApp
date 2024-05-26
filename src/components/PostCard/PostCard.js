@@ -50,7 +50,7 @@ function PostCard({ post, hideCommentsButton }) {
         </div>
         <div className={styles.postContentWrapper}>
           <Link to={`/r/${post.subreddit}/${post.id}`} className={styles.postCardLink}>
-            <h2 data-testid="subreddit">r/{post.subreddit}</h2>
+            <h2 className={styles.cardSubCategory} data-testid="subreddit">r/{post.subreddit}</h2>
             <h3 className={styles.title} data-testid="post-title">{post.title}</h3>
             <div className={styles.postContent}>
               {post.type === 'text' && <p data-testid="post-content">{post.content}</p>}
