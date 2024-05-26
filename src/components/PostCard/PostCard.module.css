@@ -1,24 +1,69 @@
 .postCard {
-  border: 1px solid #ccc;
+  width: 90%;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: column;
   border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 15px;
+  padding: 20px 20px 20px 10px;
+  margin: 15px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.147);
+  background: white;
+  overflow: hidden;
+}
+
+.postContentWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+}
+
+.postContentRow {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
 }
 
 .postCard:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.125);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+h2, h3 {
+  margin: 5px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: normal;
+
 }
 
 .postContent {
-  overflow-wrap: break-word; 
+  display: flex;
+  flex-direction: column;  
+  overflow-wrap: break-word;
+  padding-right: 30px;
+  font-style: normal;
 }
 
 .postContent img, 
 .postContent video,
 .postContent iframe {
-  max-width: 100%; 
+  width: 100%; 
   height: auto; 
+  border-radius: 20px;
+  margin: 10px 0;
+  display: flex;
+}
+
+.imageContainer {
   border-radius: 10px;
+  overflow: hidden;
+}
+
+.postImage {
+  border-radius: 10px; 
+  display: block; 
+  overflow: hidden;
 }
 
 .videoContainer {
@@ -27,35 +72,142 @@
 }
 
 .postMeta {
-  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
   font-size: 12px;
   color: #777;
+  width: 100%;
+  margin: 0 10px;
+}
+
+.postCardLink {
+  width: 100%;
+  text-decoration: none;
+  color: inherit; 
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
 }
 
 .postInteractions {
   display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.voteSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding-top: 10px;
+  padding: 5px;
+  width: 5%;
+  margin-right: 20px;
 }
 
 .voteCount {
-  margin: 0 10px;
+  margin: 5px 0;
 }
 
 .divider {
+  display: flex;
   width: 100%;
   height: 1px;
   background-color: #e8e8e8;
   border: none;
-  margin: 10px 0;
+}
+
+.upvote, .downvote {
+  border: none;
+  border-radius: 50px;
+  background: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.downvote:hover {
+  color: red;
+}
+
+.upvote:hover {
+  color: rgb(16, 158, 16);
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  margin-right: 5px;
+  margin-top: 3px;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.default-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.default-avatar-blue {
+  background-color: #007bff;
+}
+
+.default-avatar-green {
+  background-color: #28a745;
+}
+
+.default-avatar-red {
+  background-color: #dc3545;
+}
+
+.default-avatar-yellow {
+  background-color: #ffc107;
+}
+
+.default-avatar-purple {
+  background-color: #6f42c1;
 }
 
 .commentButton {
+  border: none;
+  border-radius: 10px;
   margin-left: auto;
-  background-color: #FF6E05;
+  padding: 5px 10px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
 }
 
-.postCardLink {
-  text-decoration: none;
-  color: inherit; 
+.commentButton:hover {
+  background-color: #FF6E05;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
+  /* border-radius: 10px; */
+}
+
+.commentIcon {
+  margin-left: 5px;
+}
+
+.postFooter {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
