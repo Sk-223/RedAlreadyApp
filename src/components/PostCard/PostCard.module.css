@@ -1,11 +1,10 @@
 .postCard {
-  width: 90%;
-  margin-right: 10%;
+  width: auto;
   display: flex;
   flex-direction: column;
   border-radius: 15px;
   padding: 20px 20px 20px 10px;
-  margin: 15px 0;
+  margin: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.147);
   background: white;
   overflow: hidden;
@@ -191,13 +190,12 @@ h2, h3 {
   padding: 5px 10px;
   background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.1s ease-in-out;
 }
 
 .commentButton:hover {
   background-color: #FF6E05;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.3);
-  /* border-radius: 10px; */
+  border-radius: 10px;
 }
 
 .commentIcon {

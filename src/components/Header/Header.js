@@ -23,7 +23,7 @@ function Header() {
   return (
     <div className={styles.header}>
         <div className={styles.logo}>
-        <FontAwesomeIcon icon={faReddit} size="2x" className={styles.logo} />
+        <FontAwesomeIcon icon={faReddit} size="2x" className={styles.logoIcon} />
           <h2>Red-Already</h2>
         </div>
         <div className={styles.searchBarContainer}>

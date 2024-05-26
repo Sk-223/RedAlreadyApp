@@ -30,30 +30,30 @@ function Sidebar() {
   }, []);
 
   return (
-    <aside className={styles.sidebar}>
-        <div className={styles.subredditTitle}>Subreddits</div>
-        {isLoading ? (
-          <p>Loading categories...</p>
-        ) : error ? (
-          <p>{error}</p>
-        ) : (
-          <ul>
-          {categories.map((category, index) => (
-            <li key={category.name} className={index % 2 === 0 ? styles.even : styles.odd}>
-                <img
-                  src={category.icon || defaultAvatarUrl}
-                  alt={`${category.name} icon`}
-                  className={`${styles.avatar} ${index % 3 === 0 ? styles.borderBlue : index % 3 === 1 ? styles.borderGreen : styles.borderRed}`}
-                />
-                <Link to={`/r/${category.name.substring(2)}`} className={styles.categoryButton}>
-                  {category.name}
-                </Link>
-            </li>
-            ))}
-          </ul>
-        )}
-      </aside>
-  );
+  <div className={styles.sidebar}>
+    {isLoading ? (
+      <p>Loading categories...</p>
+    ) : error ? (
+      <p>{error}</p>
+    ) : (
+      <ul>
+        <li className={styles.subredditTitle}>Subreddits</li>
+        {categories.map((category, index) => (
+          <li key={category.name} className={index % 2 === 0 ? styles.even : styles.odd}>
+            <img
+              src={category.icon || defaultAvatarUrl}
+              alt={`${category.name} icon`}
+              className={`${styles.avatar} ${index % 3 === 0 ? styles.borderBlue : index % 3 === 1 ? styles.borderGreen : styles.borderRed}`}
+            />
+            <Link to={`/r/${category.name.substring(2)}`} className={styles.categoryButton}>
+              {category.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
 }
 
 export default Sidebar;

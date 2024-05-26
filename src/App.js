@@ -16,14 +16,14 @@ function App() {
         <Header />
         <div className={styles.contentContainer}>
           <Routes>
-           {/* A Route for each subreddit and a default route */}
-           <Route index element={<MainSection />} />
+            {/* A Route for each subreddit and a default route */}
+            <Route index element={<MainSection />} />
             {/* Route for SubredditContent  */}
             <Route path="/r/:subreddit" element={<SubredditContent />} /> 
             {/* Route for PostDetailView */}
             <Route path="/r/:subreddit/:postId" element={<PostDetailView />} />
           </Routes>
-          <Sidebar className={styles.sidebar}/>
+          <Sidebar />
         </div>
       </div>
     </Provider>

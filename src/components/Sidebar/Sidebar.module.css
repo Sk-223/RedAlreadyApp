@@ -1,67 +1,70 @@
 .sidebar {
-    margin-top: 15px;
-    width: 400px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.147);
-    background: #FFFFFF;
-    padding-top: 20px;
+    width: 25%;
+    padding-top: -20px;
     text-align: center;
     border-radius: 10px;
+  }
+  
+.subredditTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 10px 25%;
+}
+
+.subredditTitle:hover {
+  background-color: #ffffff;
+  color: black;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}  
+
+.borderBlue {
+  border-color: #007bff; /* Blue */
 }
   
-  .subredditTitle {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-
-  .avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-  }  
-
-  .borderBlue {
-    border-color: #007bff; /* Blue */
-  }
+.borderGreen {
+  border-color: #28a745; /* Green */
+}
   
-  .borderGreen {
-    border-color: #28a745; /* Green */
-  }
-  
-  .borderRed {
-    border-color: #dc3545; /* Red */
-  }
+.borderRed {
+  border-color: #dc3545; /* Red */
+}
 
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+.sidebar ul {
+  list-style: none;
+  padding: 10px;
+  margin-left: 0px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.147); 
+}
   
-  .sidebar li {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-radius: 20px;
-  }
+.sidebar li {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
 
-  .categoryButton {
-    flex: 1;
-    background-color: #FFFFFF; 
-    color: #000000;
-    padding: 10px;
-    margin-left: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    text-align: left;
-    border-radius: 10px;
-  }
+.categoryButton {
+  color: #000000;
+  padding: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
   
-  .categoryButton:hover {
-    background-color: transparent; 
-  } 
-
-  .categoryButton:focus {
-    outline: none;
-  }
+.categoryButton:focus {
+  outline: none;
+}
+  
+li:hover, li:hover .avatar, li:hover .categoryButton {
+  background-color: #FF6E05;
+  color: #ffffff; /* change to the color you want for the text */
+}

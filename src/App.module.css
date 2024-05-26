@@ -10,8 +10,5 @@
     display: flex;
     justify-content: space-between;
     padding-top: 60px;
-}
-
-.mainContent {
-    max-width: 50%;
+    overflow-x: hidden;
 }
