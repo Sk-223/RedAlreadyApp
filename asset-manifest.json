@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/RedAlreadyApp/static/css/main.1fcc37dd.css",
-    "main.js": "/RedAlreadyApp/static/js/main.a231fc8c.js",
+    "main.js": "/RedAlreadyApp/static/js/main.ed0ea2b6.js",
     "index.html": "/RedAlreadyApp/index.html",
     "main.1fcc37dd.css.map": "/RedAlreadyApp/static/css/main.1fcc37dd.css.map",
-    "main.a231fc8c.js.map": "/RedAlreadyApp/static/js/main.a231fc8c.js.map"
+    "main.ed0ea2b6.js.map": "/RedAlreadyApp/static/js/main.ed0ea2b6.js.map"
   },
   "entrypoints": [
     "static/css/main.1fcc37dd.css",
-    "static/js/main.a231fc8c.js"
+    "static/js/main.ed0ea2b6.js"
   ]
 }
