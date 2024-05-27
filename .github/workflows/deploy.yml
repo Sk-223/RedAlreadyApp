@@ -8,6 +8,11 @@ on:
     branches: [ "main" ]  # Triggers the workflow on pull request events to the "main" branch
   workflow_dispatch:  # Allows you to manually trigger the workflow
 
+permissions:
+  contents: write
+  pages: write
+  pull-requests: write
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build-and-deploy:
