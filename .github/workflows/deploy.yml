@@ -29,7 +29,7 @@ jobs:
         run: npm run build  # Build the React app
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3  # Deploy the build directory to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.6.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  # The directory to deploy (React's default build directory)
+          branch: gh-pages  # The branch to deploy to
+          folder: build
