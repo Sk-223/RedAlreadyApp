@@ -1,56 +1,46 @@
-# Reddit Clone Project
+# RedAlreadyApp: A Reddit Clone
+A simplified frontend clone of Reddit built with React, Redux Toolkit, and React Router.
+
+![image](https://github.com/Sk-223/RedAlreadyApp/assets/104045720/b0136d0a-3c5b-41be-8063-2dd8bac97536)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-A simplified frontend clone of Reddit built using React, Redux Toolkit, and React Router.
+[![Deploy Status](https://img.shields.io/badge/GitHub_Pages-passing-brightgreen)](https://github.com/Sk-223/RedAlreadyApp/actions/workflows/pages/pages-build-deployment)
+[![View on GitHub Pages](https://img.shields.io/badge/View_on_GitHub_Pages-blue?style=for-the-badge&logo=github)](https://sk-223.github.io/RedAlreadyApp/)
 
 ## Features
 
-*   **Subreddit Navigation:** Browse popular subreddits (r/popular, r/all, r/news, etc.) through the sidebar.
-*   **Post Display:** View posts with titles, content (text or images), author, subreddit, and vote count.
-*   **Voting (Upvoting/Downvoting):** Interact with posts by upvoting or downvoting them. The vote count updates dynamically.
-*   **Comments (Basic):** View comments on individual posts.
-*   **Responsive Design:** The layout adapts to different screen sizes for a better user experience.
+*   **Subreddit Navigation:** Explore r/popular, r/all, r/news, and more.
+*   **Post Display:**  View titles, content (text/images), author, subreddit, and votes.
+*   **Voting:** Upvote or downvote posts.
+*   **Basic Comments:** View comments on posts.
+*   **Responsive Design:** Adapts to different screen sizes.
 
 ## Technologies Used
 
-*   **React:** The core library for building the user interface.
-*   **Redux Toolkit:** For efficient and scalable state management.
-*   **React Router:** For handling navigation between different subreddits and post views.
-*   **Reddit API:**  Fetches post data from the official Reddit API.
-*   **CSS Modules:**  For modular and maintainable styling.
-*   **Font Awesome:** For icons.
+*   **React**
+*   **Redux Toolkit**
+*   **React Router**
+*   **Reddit API**
+*   **CSS Modules**
+*   **Font Awesome**
 
 ## Getting Started
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/Sk-223/RedAlreadyApp.git
-    ```
-
-2.  **Install Dependencies:**
-    ```bash
-    cd red-already-app
-    npm install react react-dom react-router-dom @reduxjs/toolkit
-
-    ```
-
-3.  **Start the Development Server:**
-    ```bash
-    npm start
-    ```
+1.  **Clone:** `git clone https://github.com/Sk-223/RedAlreadyApp.git`
+2.  **Install:** `cd red-already-app && npm install`
+3.  **Start:** `npm start`
 
 ## Future Enhancements
 
-*   **User Authentication:** Allow users to log in, create accounts, and personalize their experience.
-*   **Search Functionality:** Implement a search bar to find posts and subreddits.
-*   **Filtering and Sorting:** Add options to filter and sort posts by various criteria.
-*   **Full Comment Functionality:** Allow users to create, reply to, and upvote/downvote comments.
-*   **Real-Time Updates:** Explore using WebSockets or similar technologies for real-time updates on new posts and comments.
+*   **User Authentication**
+*   **Search Functionality**
+*   **Post Filtering/Sorting**
+*   **Full Comment Functionality**
+*   **Real-Time Updates**
 
 ## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request.
+Contributions are welcome! Please open an issue or submit a pull request.
 
 ## License
 
